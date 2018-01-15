@@ -57,12 +57,14 @@ function drawChart() {
             //.attr("transform", `translate(0, ${height - margin.bottom})`)
             .attr("class", "parent-Group");
 
-  
+  /* append group for X-axis */
   outerG.append("g")
     .attr("class", "x-axis")
     // Jack M. code line 64 WORKS, differs from Bostock's code
     .attr("transform", `translate(0, ${height - margin.bottom})`)
     .call(d3.axisBottom(xScale));
+
+  /* append group for Y-axis */
 }
 
 
