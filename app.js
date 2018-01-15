@@ -21,8 +21,8 @@ function drawChart() {
   let containHeight = parseInt(d3.select(".container").style("height"));
 
   let margin = {top: 20, right: 20, bottom: 20, left: 20};
-  let width = containWidth - margin.left - margin.right;
-  let height = containHeight - margin.top - margin.bottom;
+  let width = containWidth //- margin.left - margin.right;
+  let height = containHeight //- margin.top - margin.bottom;
 
   console.log(containWidth, containHeight);
 
@@ -34,7 +34,7 @@ function drawChart() {
                 .padding(.2); // padding between the discreet bands
 
   let greaterHR = stressArr.map(d => d.heartRate);
-  let scaledGreaterHR = d3.max(greaterHR) * 1.1;
+  let scaledGreaterHR = d3.max(greaterHR) //* 1.1;
 
   let yScale = d3.scaleLinear()
                 .domain([0, scaledGreaterHR])
@@ -53,15 +53,15 @@ function drawChart() {
 
   /***** append outermost <g> element *****/
   let outerG = chart.append("g")
-            .attr("transform", `translate(${margin.left}, ${margin.top})`)
+            //.attr("transform", `translate(${margin.left}, ${margin.top})`)
             //.attr("transform", `translate(0, ${height - margin.bottom})`)
             .attr("class", "parent-Group");
 
   
   outerG.append("g")
     .attr("class", "x-axis")
-    .attr("transform", `translate(${0}, ${height})`)
-    .call(xScale)
+    .attr("transform", `translate(0, ${height - margin.bottom})`)
+    .call(d3.axisBottom(xScale));
 }
 
 
