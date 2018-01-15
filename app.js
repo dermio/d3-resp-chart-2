@@ -65,6 +65,10 @@ function drawChart() {
     .call(d3.axisBottom(xScale));
 
   /* append group for Y-axis */
+  outerG.append("g")
+    .attr("class", "y-axis")
+    .attr("transform", `translate(${margin.left}, ${0})`)
+    .call(d3.axisLeft(yScale))
 }
 
 
@@ -107,6 +111,11 @@ function resizeChart() {
   d3.select(".x-axis")
     .attr("transform", `translate(0, ${height - margin.bottom})`)
     .call(d3.axisBottom(xScale));
+
+  /* Update Y axis with resized scale */
+  d3.select(".y-axis")
+    //.attr("transform", `translate(${margin.left}, ${0})`)
+    .call(d3.axisLeft(yScale));
 }
 
 drawChart();
