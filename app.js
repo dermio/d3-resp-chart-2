@@ -21,8 +21,8 @@ function drawChart() {
   let containHeight = parseInt(d3.select(".container").style("height"));
 
   let margin = {top: 20, right: 20, bottom: 20, left: 20};
-  let width = containWidth //- margin.left - margin.right;
-  let height = containHeight //- margin.top - margin.bottom;
+  let width = containWidth - margin.left - margin.right;
+  let height = containHeight - margin.top - margin.bottom;
 
   console.log(containWidth, containHeight);
 
@@ -80,9 +80,31 @@ function resizeChart() {
 
   console.log(containWidth, containHeight);
 
+  /* Using the parent container dimensions, re-draw the SVG.CHART */
   d3.select(".chart")
     .attr("width", width)
     .attr("height", height);
+
+
+  /***** X-scale and Y-scale, Update the X & Y range scale *****/
+  let xScale = d3.scaleBand()
+                //.domain(["pre-HR", "post-HR"])
+                .domain(stressArr.map(d => d.typeHR))
+                .range([0, width])
+                .padding(.2); // padding between the discreet bands
+
+  let greaterHR = stressArr.map(d => d.heartRate);
+  let scaledGreaterHR = d3.max(greaterHR) //* 1.1;
+
+  let yScale = d3.scaleLinear()
+    .domain([0, scaledGreaterHR])
+    .range([height, 0]);
+
+
+  /* Update X axis with resized scale */
+  d3.select(".x-axis")
+    .attr("transform", `translate(0, ${height - margin.bottom})`)
+    .call(d3.axisBottom(xScale));
 }
 
 drawChart();
