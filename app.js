@@ -21,8 +21,8 @@ function drawChart() {
   let containHeight = parseInt(d3.select(".container").style("height"));
 
   let margin = {top: 20, right: 20, bottom: 20, left: 20};
-  let width = containWidth - margin.left - margin.right;
-  let height = containHeight - margin.top - margin.bottom;
+  let width = containWidth //- margin.left - margin.right;
+  let height = containHeight //- margin.top - margin.bottom;
 
   console.log(containWidth, containHeight);
 
@@ -77,8 +77,8 @@ function resizeChart() {
   let containHeight = parseInt(d3.select(".container").style("height"));
 
   let margin = {top: 20, right: 20, bottom: 20, left: 20};
-  let width = containWidth - margin.left - margin.right;
-  let height = containHeight - margin.top - margin.bottom;
+  let width = containWidth //- margin.left - margin.right;
+  let height = containHeight //- margin.top - margin.bottom;
 
   console.log(containWidth, containHeight);
 
