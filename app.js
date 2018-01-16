@@ -20,7 +20,7 @@ function drawChart() {
   let containWidth = parseInt(d3.select(".container").style("width"));
   let containHeight = parseInt(d3.select(".container").style("height"));
 
-  let margin = {top: 20, right: 20, bottom: 60, left: 60};
+  let margin = {top: 20, right: 20, bottom: 50, left: 50};
   let width = containWidth //- margin.left - margin.right;
   let height = containHeight //- margin.top - margin.bottom;
 
@@ -69,6 +69,15 @@ function drawChart() {
     .attr("class", "y-axis")
     .attr("transform", `translate(${margin.left}, ${0})`)
     .call(d3.axisLeft(yScale))
+
+  
+  // Append text to X-axis
+  outerG.append("text")
+    .attr("transform",
+      `translate(${width / 2}, ${height * 0.95})`) //EJL
+    .style("text-anchor", "middle")
+    .text("heart rates before and after relaxation activity")
+  
 }
 
 
