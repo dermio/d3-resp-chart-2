@@ -20,7 +20,7 @@ function drawChart() {
   let containWidth = parseInt(d3.select(".container").style("width"));
   let containHeight = parseInt(d3.select(".container").style("height"));
 
-  let margin = {top: 20, right: 20, bottom: 30, left: 30};
+  let margin = {top: 20, right: 20, bottom: 30, left: 50};
   let width = containWidth //- margin.left - margin.right;
   let height = containHeight //- margin.top - margin.bottom;
 
@@ -79,6 +79,16 @@ function drawChart() {
     .attr("class", "x-axis-label")
     .text("heart rates before and after relaxation activity")
   
+  // Append text to Y-Axis
+  outerG.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", width * .01)
+    .attr("x", 0 - height / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .attr("class", "y-axis-label")
+    .text("beats per minute");
+
 }
 
 
@@ -90,7 +100,7 @@ function resizeChart() {
   let containWidth = parseInt(d3.select(".container").style("width"));
   let containHeight = parseInt(d3.select(".container").style("height"));
 
-  let margin = {top: 20, right: 20, bottom: 30, left: 30};
+  let margin = {top: 20, right: 20, bottom: 30, left: 50};
   let width = containWidth //- margin.left - margin.right;
   let height = containHeight //- margin.top - margin.bottom;
 
@@ -138,6 +148,15 @@ function resizeChart() {
       `translate(${width / 2}, ${height * 0.95})`) //EJL
     
 
+
+    // Append text to Y-Axis
+  d3.select(".y-axis-label")
+    .attr("transform", "rotate(-90)")
+    .attr("y", width * .01)
+    .attr("x", 0 - height / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("beats per minute");
 }
 
 drawChart();
