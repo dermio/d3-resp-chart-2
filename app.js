@@ -90,6 +90,15 @@ function drawChart() {
     .text("beats per minute");
 
   // Append the rectangles for the bar chart
+  outerG.selectAll(".bar")
+        .data(stressArr)
+      .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", d => xScale(d.typeHR))
+        .attr("width", xScale.bandwidth())
+        .attr("y", d => yScale(d.heartRate))
+        .attr("height", d => height - yScale(d.heartRate));
+
 
 }
 
@@ -148,7 +157,7 @@ function resizeChart() {
       `translate(${width / 2}, ${height * 0.95})`) //EJL
     
 
-    // Append text to Y-Axis
+  // Append text to Y-Axis
   d3.select(".y-axis-label")
     .attr("transform", "rotate(-90)")
     .attr("y", width * .01)
