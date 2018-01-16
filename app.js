@@ -20,7 +20,7 @@ function drawChart() {
   let containWidth = parseInt(d3.select(".container").style("width"));
   let containHeight = parseInt(d3.select(".container").style("height"));
 
-  let margin = {top: 20, right: 20, bottom: 20, left: 20};
+  let margin = {top: 20, right: 20, bottom: 60, left: 60};
   let width = containWidth //- margin.left - margin.right;
   let height = containHeight //- margin.top - margin.bottom;
 
@@ -38,7 +38,7 @@ function drawChart() {
 
   let yScale = d3.scaleLinear()
                 .domain([0, scaledGreaterHR])
-                .range([height, 0]);
+                .range([height - margin.bottom - margin.top, 0]);
 
   /***** X-axis and Y-axis *****/
   let xAxis = d3.axisBottom(xScale);
@@ -61,7 +61,7 @@ function drawChart() {
   outerG.append("g")
     .attr("class", "x-axis")
     // Jack M. code line 64 WORKS, differs from Bostock's code
-    .attr("transform", `translate(0, ${height - margin.bottom})`)
+    .attr("transform", `translate(0, ${height - margin.bottom - margin.top})`) //*Jack
     .call(d3.axisBottom(xScale));
 
   /* append group for Y-axis */
@@ -80,7 +80,7 @@ function resizeChart() {
   let containWidth = parseInt(d3.select(".container").style("width"));
   let containHeight = parseInt(d3.select(".container").style("height"));
 
-  let margin = {top: 20, right: 20, bottom: 20, left: 20};
+  let margin = {top: 20, right: 20, bottom: 60, left: 60};
   let width = containWidth //- margin.left - margin.right;
   let height = containHeight //- margin.top - margin.bottom;
 
@@ -109,7 +109,7 @@ function resizeChart() {
 
   /* Update X axis with resized scale */
   d3.select(".x-axis")
-    .attr("transform", `translate(0, ${height - margin.bottom})`)
+    .attr("transform", `translate(0, ${height})`) // Jack**
     .call(d3.axisBottom(xScale));
 
   /* Update Y axis with resized scale */
