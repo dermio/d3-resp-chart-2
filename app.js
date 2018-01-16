@@ -67,7 +67,7 @@ function drawChart() {
   /* append group for Y-axis */
   outerG.append("g")
     .attr("class", "y-axis")
-    .attr("transform", `translate(${margin.left}, ${0})`)
+    .attr("transform", `translate(${margin.left + margin.right}, 0)`)
     .call(d3.axisLeft(yScale))
 
   
@@ -114,7 +114,7 @@ function resizeChart() {
 
   let yScale = d3.scaleLinear()
     .domain([0, scaledGreaterHR])
-    .range([height, 0]);
+    .range([height - margin.top - margin.bottom, 0]);
 
 
   /* Update X axis with resized scale */
@@ -126,7 +126,7 @@ function resizeChart() {
 
   /* Update Y axis with resized scale */
   d3.select(".y-axis")
-    //.attr("transform", `translate(${margin.left}, ${0})`)
+    .attr("transform", `translate(${margin.left + margin.right}, 0)`)
     .call(d3.axisLeft(yScale));
 
 
