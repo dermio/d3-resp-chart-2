@@ -20,7 +20,7 @@ function drawChart() {
   let containWidth = parseInt(d3.select(".container").style("width"));
   let containHeight = parseInt(d3.select(".container").style("height"));
 
-  let margin = {top: 20, right: 20, bottom: 30, left: 50};
+  let margin = {top: 20, right: 20, bottom: 40, left: 40};
   let width = containWidth //- margin.left - margin.right;
   let height = containHeight //- margin.top - margin.bottom;
 
@@ -113,7 +113,7 @@ function resizeChart() {
   let containWidth = parseInt(d3.select(".container").style("width"));
   let containHeight = parseInt(d3.select(".container").style("height"));
 
-  let margin = {top: 20, right: 20, bottom: 30, left: 50};
+  let margin = {top: 20, right: 20, bottom: 40, left: 40};
   let width = containWidth //- margin.left - margin.right;
   let height = containHeight //- margin.top - margin.bottom;
 
@@ -134,7 +134,7 @@ function resizeChart() {
                 .padding(.2); // padding between the discreet bands
 
   let greaterHR = stressArr.map(d => d.heartRate);
-  let scaledGreaterHR = d3.max(greaterHR) //* 1.1;
+  let scaledGreaterHR = d3.max(greaterHR) * 1.1;
 
   let yScale = d3.scaleLinear()
     .domain([0, scaledGreaterHR])
@@ -167,6 +167,7 @@ function resizeChart() {
     .attr("dy", "1em")
     .style("text-anchor", "middle")
     .text("beats per minute");
+
 }
 
 drawChart();
