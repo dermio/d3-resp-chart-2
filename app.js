@@ -38,7 +38,7 @@ function drawChart() {
 
   let yScale = d3.scaleLinear()
                 .domain([0, scaledGreaterHR])
-                .range([height - margin.bottom - margin.top, 0]);
+                .range([height - margin.bottom - margin.top, margin.top]);
 
   /***** X-axis and Y-axis *****/
   let xAxis = d3.axisBottom(xScale);
