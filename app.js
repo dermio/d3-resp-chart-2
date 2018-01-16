@@ -115,7 +115,7 @@ function resizeChart() {
 
   let yScale = d3.scaleLinear()
     .domain([0, scaledGreaterHR])
-    .range([height - margin.top - margin.bottom, 0]);
+    .range([height - margin.bottom - margin.top, margin.top]);
 
 
   /* Update X axis with resized scale */
