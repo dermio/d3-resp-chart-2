@@ -27,3 +27,11 @@ html, body {
 g, text {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', sans-serif
 }
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
