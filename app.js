@@ -97,7 +97,9 @@ function drawChart() {
         .attr("x", d => xScale(d.typeHR))
         .attr("width", xScale.bandwidth())
         .attr("y", d => yScale(d.heartRate))
-        .attr("height", d => height - yScale(d.heartRate));
+        .attr("height", d => {
+          return height - yScale(d.heartRate) - margin.bottom - margin.top;
+        });
 
 
 }
