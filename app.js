@@ -76,6 +76,7 @@ function drawChart() {
     .attr("transform",
       `translate(${width / 2}, ${height * 0.95})`) //EJL
     .style("text-anchor", "middle")
+    .attr("class", "x-axis-label")
     .text("heart rates before and after relaxation activity")
   
 }
@@ -118,13 +119,24 @@ function resizeChart() {
 
   /* Update X axis with resized scale */
   d3.select(".x-axis")
-    .attr("transform", `translate(0, ${height})`) // Jack**
+    .attr("transform", `translate(0, ${height - margin.bottom - margin.top})`) // Jack**
     .call(d3.axisBottom(xScale));
+
+
 
   /* Update Y axis with resized scale */
   d3.select(".y-axis")
     //.attr("transform", `translate(${margin.left}, ${0})`)
     .call(d3.axisLeft(yScale));
+
+
+
+  // Update text to X-axis
+  d3.select(".x-axis-label")
+    .attr("transform",
+      `translate(${width / 2}, ${height * 0.95})`) //EJL
+    
+
 }
 
 drawChart();
