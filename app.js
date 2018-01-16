@@ -34,7 +34,7 @@ function drawChart() {
                 .padding(.2); // padding between the discreet bands
 
   let greaterHR = stressArr.map(d => d.heartRate);
-  let scaledGreaterHR = d3.max(greaterHR) //* 1.1;
+  let scaledGreaterHR = d3.max(greaterHR) * 1.1;
 
   let yScale = d3.scaleLinear()
                 .domain([0, scaledGreaterHR])
@@ -89,6 +89,8 @@ function drawChart() {
     .attr("class", "y-axis-label")
     .text("beats per minute");
 
+  // Append the rectangles for the bar chart
+
 }
 
 
@@ -134,12 +136,10 @@ function resizeChart() {
     .call(d3.axisBottom(xScale));
 
 
-
   /* Update Y axis with resized scale */
   d3.select(".y-axis")
     .attr("transform", `translate(${margin.left + margin.right}, 0)`)
     .call(d3.axisLeft(yScale));
-
 
 
   // Update text to X-axis
@@ -147,7 +147,6 @@ function resizeChart() {
     .attr("transform",
       `translate(${width / 2}, ${height * 0.95})`) //EJL
     
-
 
     // Append text to Y-Axis
   d3.select(".y-axis-label")
@@ -163,43 +162,3 @@ drawChart();
 
 //window.addEventListener("resize", resizeChart);
 d3.select(window).on("resize", resizeChart);
-
-
-/*
-Recommended D3 authors from Eric L:
-Nadieh Bremer, Shirley Wu, Currhan
-Elijah Meeks (knows D3 and React)
-
-*/
-
-
-
-
-
-
-
-
-/*
-  let chart = d3.select(".chart")
-        .attr("width", width)
-        .attr("height", height);
-
-  let xScale = d3.scaleBand()
-    //.domain(["pre-HR", "post-HR"])
-    .domain(stressArr.map(d => d.typeHR))
-    .range([0, width])
-    .padding(.2); // padding between the discreet bands
-
-    let xAxis = d3.axisBottom(xScale); console.log(typeof xAxis)
-  
-
-  chart.attr("width", containWidth)
-        .attr("height", containHeight);
-
-
-  let outerG = d3.select(".parent-Group")
-  //.attr("transform", `translate(${margin.left}, ${margin.right})`)
-  .attr("transform", `translate(0, ${height - margin.bottom})`)
-
-outerG.call(xAxis)
-*/
