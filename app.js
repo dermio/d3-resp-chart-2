@@ -20,7 +20,7 @@ function drawChart() {
   let containWidth = parseInt(d3.select(".container").style("width"));
   let containHeight = parseInt(d3.select(".container").style("height"));
 
-  let margin = {top: 20, right: 20, bottom: 50, left: 50};
+  let margin = {top: 20, right: 20, bottom: 30, left: 30};
   let width = containWidth //- margin.left - margin.right;
   let height = containHeight //- margin.top - margin.bottom;
 
@@ -30,7 +30,7 @@ function drawChart() {
   let xScale = d3.scaleBand()
                 //.domain(["pre-HR", "post-HR"])
                 .domain(stressArr.map(d => d.typeHR))
-                .range([0, width])
+                .range([margin.right + margin.left, width - margin.left])
                 .padding(.2); // padding between the discreet bands
 
   let greaterHR = stressArr.map(d => d.heartRate);
@@ -90,7 +90,7 @@ function resizeChart() {
   let containWidth = parseInt(d3.select(".container").style("width"));
   let containHeight = parseInt(d3.select(".container").style("height"));
 
-  let margin = {top: 20, right: 20, bottom: 60, left: 60};
+  let margin = {top: 20, right: 20, bottom: 30, left: 30};
   let width = containWidth //- margin.left - margin.right;
   let height = containHeight //- margin.top - margin.bottom;
 
@@ -106,7 +106,8 @@ function resizeChart() {
   let xScale = d3.scaleBand()
                 //.domain(["pre-HR", "post-HR"])
                 .domain(stressArr.map(d => d.typeHR))
-                .range([0, width])
+                .range([margin.right + margin.left, width - margin.left])
+                //.range([0, width])
                 .padding(.2); // padding between the discreet bands
 
   let greaterHR = stressArr.map(d => d.heartRate);
