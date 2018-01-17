@@ -159,7 +159,7 @@ function resizeChart() {
       `translate(${width / 2}, ${height * 0.95})`) //EJL
     
 
-  // Append text to Y-Axis
+  // Update text to Y-Axis
   d3.select(".y-axis-label")
     .attr("transform", "rotate(-90)")
     .attr("y", width * .01)
@@ -168,6 +168,15 @@ function resizeChart() {
     .style("text-anchor", "middle")
     .text("beats per minute");
 
+
+  // Re-draw the rectangles for the bar chart
+  d3.selectAll(".bar")
+    .attr("x", d => xScale(d.typeHR))
+    .attr("width", xScale.bandwidth())
+    .attr("y", d => yScale(d.heartRate))
+    .attr("height", d => {
+      return height - yScale(d.heartRate) - margin.bottom - margin.top;
+    });
 }
 
 drawChart();
