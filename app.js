@@ -101,6 +101,20 @@ function drawChart() {
           return height - yScale(d.heartRate) - margin.bottom - margin.top;
         });
 
+  // Add heart rate label to the top of each rectangle bar
+  outerG.selectAll(".heart-val")
+      .data(stressArr)
+    .enter().append("text")
+      .attr("class", "heart-val")
+      .attr("x", function (d) {
+        //return xScale(d.typeHR);
+        return xScale(d.typeHR) + xScale.bandwidth() / 2;
+      })
+      .attr("y", d => yScale(d.heartRate))
+      .attr("dy", "1em")
+      .text(d => d.heartRate)
+      .attr("fill", "white")
+      .attr("text-anchor", "middle")
 
 }
 
