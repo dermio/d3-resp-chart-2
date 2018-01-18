@@ -114,7 +114,7 @@ function drawChart() {
       .attr("dy", "1em")
       .text(d => d.heartRate)
       .attr("fill", "white")
-      .attr("text-anchor", "middle")
+      .attr("text-anchor", "middle");
 
 }
 
@@ -191,6 +191,19 @@ function resizeChart() {
     .attr("height", d => {
       return height - yScale(d.heartRate) - margin.bottom - margin.top;
     });
+
+  // Re-render the heart label at the top of each bar rectangle
+  d3.selectAll(".heart-val")
+    .attr("x", function (d) {
+      //return xScale(d.typeHR);
+      return xScale(d.typeHR) + xScale.bandwidth() / 2;
+    })
+    .attr("y", d => yScale(d.heartRate))
+    .attr("dy", "1em")
+    .text(d => d.heartRate)
+    .attr("fill", "white")
+    .attr("text-anchor", "middle");
+
 }
 
 drawChart();
