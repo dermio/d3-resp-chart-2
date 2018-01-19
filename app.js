@@ -62,13 +62,15 @@ function drawChart() {
     .attr("class", "x-axis")
     // Jack M. code line 64 WORKS, differs from Bostock's code
     .attr("transform", `translate(0, ${height - margin.bottom - margin.top})`) //*Jack
-    .call(d3.axisBottom(xScale));
+    //.call(d3.axisBottom(xScale));
+    .call(xAxis); // same as line above, from line 44
 
   /* append group for Y-axis */
   outerG.append("g")
     .attr("class", "y-axis")
     .attr("transform", `translate(${margin.left + margin.right}, 0)`)
-    .call(d3.axisLeft(yScale))
+    //.call(d3.axisLeft(yScale));
+    .call(yAxis); // same as line above, from line 45
 
   
   // Append text to X-axis
