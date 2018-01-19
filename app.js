@@ -165,13 +165,15 @@ function resizeChart() {
   /* Update X axis with resized scale */
   d3.select(".x-axis")
     .attr("transform", `translate(0, ${height - margin.bottom - margin.top})`) // Jack**
-    .call(d3.axisBottom(xScale));
+    //.call(d3.axisBottom(xScale));
+    .call(xAxis); // same as line above, from line 161
 
 
   /* Update Y axis with resized scale */
   d3.select(".y-axis")
     .attr("transform", `translate(${margin.left + margin.right}, 0)`)
-    .call(d3.axisLeft(yScale));
+    //.call(d3.axisLeft(yScale));
+    .call(yAxis); // same as line above, from line 162
 
 
   // Update text to X-axis
