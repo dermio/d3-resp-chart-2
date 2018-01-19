@@ -157,6 +157,11 @@ function resizeChart() {
     .range([height - margin.bottom - margin.top, margin.top]);
 
 
+  /***** X-axis and Y-axis *****/
+  let xAxis = d3.axisBottom(xScale);
+  let yAxis = d3.axisLeft(yScale);
+
+
   /* Update X axis with resized scale */
   d3.select(".x-axis")
     .attr("transform", `translate(0, ${height - margin.bottom - margin.top})`) // Jack**
