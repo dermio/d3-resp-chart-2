@@ -78,7 +78,7 @@ function drawChart() {
     //.call(d3.axisLeft(yScale));
     .call(yAxis); // same as line above, from line 45
 
-  
+
   // Append text to X-axis
   outerG.append("text")
     .attr("transform",
@@ -86,7 +86,7 @@ function drawChart() {
     .style("text-anchor", "middle")
     .attr("class", "x-axis-label")
     .text("heart rates before and after relaxation activity")
-  
+
   // Append text to Y-Axis
   outerG.append("text")
     .attr("transform", "rotate(-90)")
@@ -192,7 +192,7 @@ function resizeChart() {
   d3.select(".x-axis-label")
     .attr("transform",
       `translate(${width / 2}, ${height * 0.95})`) //EJL
-    
+
 
   // Update text to Y-Axis
   d3.select(".y-axis-label")
