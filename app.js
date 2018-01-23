@@ -20,6 +20,12 @@ function drawChart() {
   let containWidth = parseInt(d3.select(".chart-container").style("width"));
   let containHeight = parseInt(d3.select(".chart-container").style("height"));
 
+  /* Optional: Can set the width and height based on the aspect ratio
+  For example: 4:3 ratio, or the height is 75% the length of the width
+  let containWidth = // some number;
+  let containHeight = containWidth * 0.75;
+  */
+
   let margin = {top: 20, right: 20, bottom: 40, left: 40};
   let width = containWidth //- margin.left - margin.right;
   let height = containHeight //- margin.top - margin.bottom;
@@ -128,6 +134,12 @@ function resizeChart() {
   // SVG chart will have width & length of parent container element
   let containWidth = parseInt(d3.select(".chart-container").style("width"));
   let containHeight = parseInt(d3.select(".chart-container").style("height"));
+
+  /* Optional: Can set the width and height based on the aspect ratio
+  For example: 4:3 ratio, or the height is 75% the length of the width
+  let containWidth = // some number;
+  let containHeight = containWidth * 0.75;
+  */
 
   let margin = {top: 20, right: 20, bottom: 40, left: 40};
   let width = containWidth //- margin.left - margin.right;
