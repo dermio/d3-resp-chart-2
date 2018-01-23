@@ -1,3 +1,6 @@
+/* The code below is for the chart demo. This code will differ based
+on implementation. */
+
 html, body {
   height: 100%;
   width: 100%;
@@ -10,7 +13,12 @@ html, body {
   border: 1px solid red;
 }
 
-.container {
+/* The code below is the important styling for the chart.
+A parent .chart-container is needed for the chart. However the dimension
+values of the parent will differ based on where the chart is placed inside
+the HTML file. */
+
+.chart-container {
   width: 90%;
   height: 90%;
   border: 1px solid green;
