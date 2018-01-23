@@ -17,8 +17,8 @@ let stressArr = [
 function drawChart() {
   /***** Chart dimensions *****/
   // SVG chart will have width & length of parent container element
-  let containWidth = parseInt(d3.select(".container").style("width"));
-  let containHeight = parseInt(d3.select(".container").style("height"));
+  let containWidth = parseInt(d3.select(".chart-container").style("width"));
+  let containHeight = parseInt(d3.select(".chart-container").style("height"));
 
   let margin = {top: 20, right: 20, bottom: 40, left: 40};
   let width = containWidth //- margin.left - margin.right;
@@ -45,7 +45,7 @@ function drawChart() {
   let yAxis = d3.axisLeft(yScale);
 
   /***** append SVG *****/
-  let chart = d3.select(".container")
+  let chart = d3.select(".chart-container")
               .append("svg")
                 .attr("class", "chart")
                 .attr("width", width)
@@ -126,8 +126,8 @@ function drawChart() {
 function resizeChart() {
   /***** Chart dimensions *****/
   // SVG chart will have width & length of parent container element
-  let containWidth = parseInt(d3.select(".container").style("width"));
-  let containHeight = parseInt(d3.select(".container").style("height"));
+  let containWidth = parseInt(d3.select(".chart-container").style("width"));
+  let containHeight = parseInt(d3.select(".chart-container").style("height"));
 
   let margin = {top: 20, right: 20, bottom: 40, left: 40};
   let width = containWidth //- margin.left - margin.right;
