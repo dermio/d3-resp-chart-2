@@ -7,14 +7,14 @@ let stressors = {
   "postHeartRate": 70
 };
 
-let stressArr = [
+let stressorData = [
   {typeHR: "preHeartRate", heartRate: 80},
   {typeHR: "postHeartRate", heartRate: 70}
 ];
 
 
 /********** drawChart function **********/
-function drawChart() {
+function drawChart(stressArr) {
   /***** Chart dimensions *****/
   // SVG chart will have width & length of parent container element
   let containWidth = parseInt(d3.select(".chart-container").style("width"));
@@ -129,7 +129,7 @@ function drawChart() {
 
 
 /********** resizeChart function **********/
-function resizeChart() {
+function resizeChart(stressArr) {
   /***** Chart dimensions *****/
   // SVG chart will have width & length of parent container element
   let containWidth = parseInt(d3.select(".chart-container").style("width"));
@@ -227,7 +227,9 @@ function resizeChart() {
 
 }
 
-drawChart();
+drawChart(stressorData);
 
 //window.addEventListener("resize", resizeChart);
-d3.select(window).on("resize", resizeChart);
+d3.select(window).on("resize", function (event) {
+  resizeChart(stressorData);
+});
